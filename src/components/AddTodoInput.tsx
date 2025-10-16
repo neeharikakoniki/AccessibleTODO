@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+} from 'react-native';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../store/todoSlice';
 
@@ -15,14 +21,26 @@ const AddTodoInput = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} accessible={true}>
       <TextInput
         style={styles.input}
         placeholder="Add new task..."
         value={text}
         onChangeText={setText}
+        allowFontScaling={true}
+        accessibilityLabel="Add new task input"
+        accessibilityHint="Enter task name here"
       />
-      <Button title="Add" onPress={handleAdd} />
+
+      <TouchableOpacity
+        style={styles.addButton}
+        onPress={handleAdd}
+        accessibilityRole="button"
+        accessibilityLabel="Add task"
+        accessibilityHint="Adds your new task to the list"
+      >
+        <Text style={styles.addButtonText}>Add</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -36,6 +54,17 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 10,
     marginRight: 10,
+  },
+  addButton: {
+    backgroundColor: '#C62828',
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+  },
+  addButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
 

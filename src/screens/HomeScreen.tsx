@@ -5,11 +5,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { RootState } from '../store/store';
 import AddTodoInput from '../components/AddTodoInput';
 import TodoItem from '../components/TodoItem';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const HomeScreen = () => {
   const todos = useSelector((state: RootState) => state.todos.items);
 
   return (
+    <SafeAreaProvider>
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Text style={styles.title}>Accessible To-Do List</Text>
@@ -26,6 +28,7 @@ const HomeScreen = () => {
         />
       </View>
     </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 

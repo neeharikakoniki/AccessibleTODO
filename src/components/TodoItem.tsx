@@ -13,13 +13,28 @@ const TodoItem = ({ id, title, completed }: Props) => {
   const dispatch = useDispatch();
 
   return (
-    <View style={styles.item}>
-      <TouchableOpacity onPress={() => dispatch(toggleTodo(id))}>
-        <Text style={[styles.text, completed && styles.completed]}>
+    <View style={styles.item} accessible={true}>
+      <TouchableOpacity
+        accessibilityRole="checkbox"
+        accessibilityLabel={title}
+        accessibilityState={{ checked: completed }}
+        accessibilityHint="Double tap to mark as complete or incomplete"
+        onPress={() => dispatch(toggleTodo(id))}
+      >
+        <Text
+          style={[styles.text, completed && styles.completed]}
+          allowFontScaling={true}
+        >
           {title}
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => dispatch(deleteTodo(id))}>
+
+      <TouchableOpacity
+        accessibilityRole="button"
+        accessibilityLabel={`Delete ${title}`}
+        accessibilityHint="Removes this task from the list"
+        onPress={() => dispatch(deleteTodo(id))}
+      >
         <Text style={styles.delete}>Delete</Text>
       </TouchableOpacity>
     </View>
