@@ -40,7 +40,7 @@ const AddTodoInput = () => {
         accessibilityHint="Adds your new task to the list"
       >
         <Text style={styles.addButtonText}>Add</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> 
     </View>
   );
 };
