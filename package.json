@@ -19,6 +19,19 @@
     "node_modules/(?!(@react-native|react-native|@react-navigation|@reduxjs/toolkit|react-redux|immer)/)"
   ]
 },
+"detox": {
+  "testRunner": "jest",
+  "configurations": {
+    "ios.sim.debug": {
+      "type": "ios.simulator",
+      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/AccessibleTodoApp.app",
+      "build": "xcodebuild -workspace ios/AccessibleTodoApp.xcworkspace -scheme AccessibleTodoApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+      "device": {
+        "type": "iPhone 16 Pro"
+      }
+    }
+  }
+},
 
   "dependencies": {
     "@react-native/new-app-screen": "0.82.0",
