@@ -23,6 +23,7 @@ const AddTodoInput = () => {
   return (
     <View style={styles.container} accessible={true}>
       <TextInput
+        testID="add-todo-input"
         style={styles.input}
         placeholder="Add new task..."
         value={text}
@@ -33,6 +34,7 @@ const AddTodoInput = () => {
       />
 
       <TouchableOpacity
+        testID="add-button"
         style={styles.addButton}
         onPress={handleAdd}
         accessibilityRole="button"
@@ -40,7 +42,7 @@ const AddTodoInput = () => {
         accessibilityHint="Adds your new task to the list"
       >
         <Text style={styles.addButtonText}>Add</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> 
     </View>
   );
 };
